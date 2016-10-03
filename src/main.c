@@ -49,6 +49,9 @@ SOFTWARE.
 int main(void)
 {
   int i = 0;
+  int counter = 0;
+  int tmp1 = 0;
+  int time = 7;
 
   /**
   *  IMPORTANT NOTE!
@@ -91,19 +94,19 @@ int main(void)
   GPIO_Init(GPIOC, &gpioInitStruc);
 
   uint8_t buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 
   /* Infinite loop */
   while (1) {
 
 //uloha3_2
-
-	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+/*	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 
 	  if (buttonState == 0) {
 		  GPIO_SetBits(GPIOA, GPIO_Pin_5);
 	} else if (buttonState == 1) {
 		GPIO_ResetBits(GPIOA, GPIO_Pin_5);
-	}
+	}*/
 
 //uloha3_1
 /*	  GPIO_SetBits(GPIOA, GPIO_Pin_5);
@@ -113,6 +116,45 @@ int main(void)
 	  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
 
 	  for (int j;j<999999;j++) {}*/
+
+//uloha3_3
+	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
+	  if (buttonState == 1) {
+		  while(counter < time) {
+			  counter++;
+		  }
+	  	  counter = 0;
+
+	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+	  	  if (buttonState == 0) {
+	  		  while(counter < time) {
+	  			counter++;
+	  		  }
+	  		  counter = 0;
+
+
+	  			  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+	  			  if (buttonState == 1) {
+	  			  		while(counter < time) {
+	  			  			counter++;
+	  			  		}
+	  			  		counter = 0;
+
+	  			  		if(tmp1 == 0){
+	  			  			GPIO_SetBits(GPIOA, GPIO_Pin_5);
+	  			  			tmp1 = 1;
+	  			  		} else if(tmp1 == 1) {
+	  			  			GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+	  			  			tmp1 = 0;
+	  			  		}
+	  			  	}
+	  	  }
+	  	}
+
+
+
+
 
 	  i++;
   }
