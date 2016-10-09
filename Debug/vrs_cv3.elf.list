@@ -29,15 +29,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  12 .debug_ranges 00000260  00000000  00000000  00012c48  2**3
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_line   00000f19  00000000  00000000  00012ea8  2**0
+ 13 .debug_line   00000f17  00000000  00000000  00012ea8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00000c0a  00000000  00000000  00013dc1  2**0
+ 14 .debug_str    00000c0a  00000000  00000000  00013dbf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .comment      0000007e  00000000  00000000  000149cb  2**0
+ 15 .comment      0000007e  00000000  00000000  000149c9  2**0
                   CONTENTS, READONLY
- 16 .debug_frame  00000a48  00000000  00000000  00014a4c  2**2
+ 16 .debug_frame  00000a48  00000000  00000000  00014a48  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .stabstr      0000003f  00000000  00000000  00015494  2**0
+ 17 .stabstr      0000003f  00000000  00000000  00015490  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -535,13 +535,13 @@ int main(void)
  80003d0:	4603      	mov	r3, r0
  80003d2:	73fb      	strb	r3, [r7, #15]
 
-	  if (buttonState == 1) {
+		  	  if (buttonState == 1) {
  80003d4:	7bfb      	ldrb	r3, [r7, #15]
  80003d6:	2b01      	cmp	r3, #1
  80003d8:	d144      	bne.n	8000464 <main+0x110>
-		  while(counter < time) {
+		  		  while(counter < time) {
  80003da:	e002      	b.n	80003e2 <main+0x8e>
-			  counter++;
+		  			  counter++;
  80003dc:	69bb      	ldr	r3, [r7, #24]
  80003de:	3301      	adds	r3, #1
  80003e0:	61bb      	str	r3, [r7, #24]
@@ -549,116 +549,117 @@ int main(void)
 //uloha3_3
 	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 
-	  if (buttonState == 1) {
-		  while(counter < time) {
+		  	  if (buttonState == 1) {
+		  		  while(counter < time) {
  80003e2:	69ba      	ldr	r2, [r7, #24]
  80003e4:	693b      	ldr	r3, [r7, #16]
  80003e6:	429a      	cmp	r2, r3
  80003e8:	dbf8      	blt.n	80003dc <main+0x88>
-			  counter++;
-		  }
-	  	  counter = 0;
+		  			  counter++;
+		  		  }
+		  	  	  counter = 0;
  80003ea:	2300      	movs	r3, #0
  80003ec:	61bb      	str	r3, [r7, #24]
 
-	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+		  	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
  80003ee:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  80003f2:	481f      	ldr	r0, [pc, #124]	; (8000470 <main+0x11c>)
  80003f4:	f7ff ff58 	bl	80002a8 <GPIO_ReadInputDataBit>
  80003f8:	4603      	mov	r3, r0
  80003fa:	73fb      	strb	r3, [r7, #15]
-	  	  if (buttonState == 0) {
+
+		  	  	  if (buttonState == 0) {
  80003fc:	7bfb      	ldrb	r3, [r7, #15]
  80003fe:	2b00      	cmp	r3, #0
  8000400:	d130      	bne.n	8000464 <main+0x110>
-	  		  while(counter < time) {
+		  	  		  while(counter < time) {
  8000402:	e002      	b.n	800040a <main+0xb6>
-	  			counter++;
+		  	  			counter++;
  8000404:	69bb      	ldr	r3, [r7, #24]
  8000406:	3301      	adds	r3, #1
  8000408:	61bb      	str	r3, [r7, #24]
-		  }
-	  	  counter = 0;
+		  	  	  counter = 0;
 
-	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	  	  if (buttonState == 0) {
-	  		  while(counter < time) {
+		  	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
+		  	  	  if (buttonState == 0) {
+		  	  		  while(counter < time) {
  800040a:	69ba      	ldr	r2, [r7, #24]
  800040c:	693b      	ldr	r3, [r7, #16]
  800040e:	429a      	cmp	r2, r3
  8000410:	dbf8      	blt.n	8000404 <main+0xb0>
-	  			counter++;
-	  		  }
-	  		  counter = 0;
+		  	  			counter++;
+		  	  		  }
+		  	  		  counter = 0;
  8000412:	2300      	movs	r3, #0
  8000414:	61bb      	str	r3, [r7, #24]
 
-
-	  			  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+		  	  		  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
  8000416:	f44f 5100 	mov.w	r1, #8192	; 0x2000
  800041a:	4815      	ldr	r0, [pc, #84]	; (8000470 <main+0x11c>)
  800041c:	f7ff ff44 	bl	80002a8 <GPIO_ReadInputDataBit>
  8000420:	4603      	mov	r3, r0
  8000422:	73fb      	strb	r3, [r7, #15]
-	  			  if (buttonState == 1) {
+
+		  	  		  if (buttonState == 1) {
  8000424:	7bfb      	ldrb	r3, [r7, #15]
  8000426:	2b01      	cmp	r3, #1
  8000428:	d11c      	bne.n	8000464 <main+0x110>
-	  			  		while(counter < time) {
+		  	  			  while(counter < time) {
  800042a:	e002      	b.n	8000432 <main+0xde>
-	  			  			counter++;
+		  	  				  counter++;
  800042c:	69bb      	ldr	r3, [r7, #24]
  800042e:	3301      	adds	r3, #1
  8000430:	61bb      	str	r3, [r7, #24]
-	  		  counter = 0;
+		  	  		  counter = 0;
 
+		  	  		  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 
-	  			  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	  			  if (buttonState == 1) {
-	  			  		while(counter < time) {
+		  	  		  if (buttonState == 1) {
+		  	  			  while(counter < time) {
  8000432:	69ba      	ldr	r2, [r7, #24]
  8000434:	693b      	ldr	r3, [r7, #16]
  8000436:	429a      	cmp	r2, r3
  8000438:	dbf8      	blt.n	800042c <main+0xd8>
-	  			  			counter++;
-	  			  		}
-	  			  		counter = 0;
+		  	  				  counter++;
+		  	  			  }
+		  	  			  counter = 0;
  800043a:	2300      	movs	r3, #0
  800043c:	61bb      	str	r3, [r7, #24]
 
-	  			  		if(tmp1 == 0){
+		  	  			  if(tmp1 == 0){
  800043e:	697b      	ldr	r3, [r7, #20]
  8000440:	2b00      	cmp	r3, #0
  8000442:	d106      	bne.n	8000452 <main+0xfe>
-	  			  			GPIO_SetBits(GPIOA, GPIO_Pin_5);
+		  	  				  GPIO_SetBits(GPIOA, GPIO_Pin_5);
  8000444:	2120      	movs	r1, #32
  8000446:	4809      	ldr	r0, [pc, #36]	; (800046c <main+0x118>)
  8000448:	f7ff ff4a 	bl	80002e0 <GPIO_SetBits>
-	  			  			tmp1 = 1;
+		  	  			  	  tmp1 = 1;
  800044c:	2301      	movs	r3, #1
  800044e:	617b      	str	r3, [r7, #20]
  8000450:	e008      	b.n	8000464 <main+0x110>
-	  			  		} else if(tmp1 == 1) {
+		  	  			  } else if(tmp1 == 1) {
  8000452:	697b      	ldr	r3, [r7, #20]
  8000454:	2b01      	cmp	r3, #1
  8000456:	d105      	bne.n	8000464 <main+0x110>
-	  			  			GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+		  	  				  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
  8000458:	2120      	movs	r1, #32
  800045a:	4804      	ldr	r0, [pc, #16]	; (800046c <main+0x118>)
  800045c:	f7ff ff4e 	bl	80002fc <GPIO_ResetBits>
-	  			  			tmp1 = 0;
+		  	  			  	  tmp1 = 0;
  8000460:	2300      	movs	r3, #0
  8000462:	617b      	str	r3, [r7, #20]
+		  	  			  }
+		  	  		  }
+		  	  	  }
+		  	  	}
 
-
-
-
-
-	  i++;
+		  	  i++;
  8000464:	69fb      	ldr	r3, [r7, #28]
  8000466:	3301      	adds	r3, #1
  8000468:	61fb      	str	r3, [r7, #28]
-  }
+		    }
  800046a:	e7ac      	b.n	80003c6 <main+0x72>
  800046c:	40020000 	.word	0x40020000
  8000470:	40020800 	.word	0x40020800

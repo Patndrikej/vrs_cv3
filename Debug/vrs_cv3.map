@@ -1892,13 +1892,13 @@ OUTPUT(vrs_cv3.elf elf32-littlearm)
  .debug_ranges  0x000001f0       0x50 src\stm32l1xx_it.o
  .debug_ranges  0x00000240       0x20 src\system_stm32l1xx.o
 
-.debug_line     0x00000000      0xf19
+.debug_line     0x00000000      0xf17
  .debug_line    0x00000000      0x35d Libraries\STM32L1xx_StdPeriph_Driver\src\stm32l1xx_gpio.o
  .debug_line    0x0000035d      0x521 Libraries\STM32L1xx_StdPeriph_Driver\src\stm32l1xx_rcc.o
- .debug_line    0x0000087e      0x21e src\main.o
- .debug_line    0x00000a9c       0x7c src\startup_stm32l1xx_hd.o
- .debug_line    0x00000b18      0x1e7 src\stm32l1xx_it.o
- .debug_line    0x00000cff      0x21a src\system_stm32l1xx.o
+ .debug_line    0x0000087e      0x21c src\main.o
+ .debug_line    0x00000a9a       0x7c src\startup_stm32l1xx_hd.o
+ .debug_line    0x00000b16      0x1e7 src\stm32l1xx_it.o
+ .debug_line    0x00000cfd      0x21a src\system_stm32l1xx.o
 
 .debug_str      0x00000000      0xc0a
  .debug_str     0x00000000      0x4ad Libraries\STM32L1xx_StdPeriph_Driver\src\stm32l1xx_gpio.o

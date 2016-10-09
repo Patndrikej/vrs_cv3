@@ -120,47 +120,44 @@ int main(void)
 //uloha3_3
 	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
 
-	  if (buttonState == 1) {
-		  while(counter < time) {
-			  counter++;
+		  	  if (buttonState == 1) {
+		  		  while(counter < time) {
+		  			  counter++;
+		  		  }
+		  	  	  counter = 0;
+
+		  	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
+		  	  	  if (buttonState == 0) {
+		  	  		  while(counter < time) {
+		  	  			counter++;
+		  	  		  }
+		  	  		  counter = 0;
+
+		  	  		  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+
+		  	  		  if (buttonState == 1) {
+		  	  			  while(counter < time) {
+		  	  				  counter++;
+		  	  			  }
+		  	  			  counter = 0;
+
+		  	  			  if(tmp1 == 0){
+		  	  				  GPIO_SetBits(GPIOA, GPIO_Pin_5);
+		  	  			  	  tmp1 = 1;
+		  	  			  } else if(tmp1 == 1) {
+		  	  				  GPIO_ResetBits(GPIOA, GPIO_Pin_5);
+		  	  			  	  tmp1 = 0;
+		  	  			  }
+		  	  		  }
+		  	  	  }
+		  	  	}
+
+		  	  i++;
+		    }
+
+		    return 0;
 		  }
-	  	  counter = 0;
-
-	  	  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	  	  if (buttonState == 0) {
-	  		  while(counter < time) {
-	  			counter++;
-	  		  }
-	  		  counter = 0;
-
-
-	  			  buttonState = GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
-	  			  if (buttonState == 1) {
-	  			  		while(counter < time) {
-	  			  			counter++;
-	  			  		}
-	  			  		counter = 0;
-
-	  			  		if(tmp1 == 0){
-	  			  			GPIO_SetBits(GPIOA, GPIO_Pin_5);
-	  			  			tmp1 = 1;
-	  			  		} else if(tmp1 == 1) {
-	  			  			GPIO_ResetBits(GPIOA, GPIO_Pin_5);
-	  			  			tmp1 = 0;
-	  			  		}
-	  			  	}
-	  	  }
-	  	}
-
-
-
-
-
-	  i++;
-  }
-
-  return 0;
-}
 
 #ifdef  USE_FULL_ASSERT
 
